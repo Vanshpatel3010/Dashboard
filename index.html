@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar - hidden on mobile -->
+        <aside class="hidden md:flex flex-col w-64 bg-gray-800 text-white">
+            <div class="px-6 py-4">
+                <h1 class="text-2xl font-semibold">Dashboard</h1>
+            </div>
+            <nav class="flex-1 px-4 py-4">
+                <a href="#" class="flex items-center px-2 py-2 mt-2 text-sm font-medium rounded-md bg-gray-700">
+                    <span data-feather="home" class="h-5 w-5 mr-2"></span>
+                    Overview
+                </a>
+                <a href="#" class="flex items-center px-2 py-2 mt-2 text-sm font-medium rounded-md hover:bg-gray-700">
+                    <span data-feather="bar-chart-2" class="h-5 w-5 mr-2"></span>
+                    Analytics
+                </a>
+                <a href="#" class="flex items-center px-2 py-2 mt-2 text-sm font-medium rounded-md hover:bg-gray-700">
+                    <span data-feather="users" class="h-5 w-5 mr-2"></span>
+                    Customers
+                </a>
+                <a href="#" class="flex items-center px-2 py-2 mt-2 text-sm font-medium rounded-md hover:bg-gray-700">
+                    <span data-feather="file-text" class="h-5 w-5 mr-2"></span>
+                    Reports
+                </a>
+                <a href="#" class="flex items-center px-2 py-2 mt-2 text-sm font-medium rounded-md hover:bg-gray-700">
+                    <span data-feather="settings" class="h-5 w-5 mr-2"></span>
+                    Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Top Header -->
+            <header class="bg-white shadow">
+                <div class="flex items-center justify-between px-4 py-3">
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden text-gray-500 focus:outline-none">
+                        <span data-feather="menu" class="h-6 w-6"></span>
+                    </button>
+                    
+                    <!-- Search Bar -->
+                    <div class="relative w-full max-w-md sm:max-w-xs">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                            <span data-feather="search" class="h-5 w-5 text-gray-400"></span>
+                        </span>
+                        <input class="block w-full pl-10 pr-4 py-2 rounded-md text-sm bg-gray-100 border-transparent focus:border-blue-500 focus:ring-0 focus:bg-white" type="text" placeholder="Search...">
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="flex items-center">
+                        <button class="p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none">
+                            <span data-feather="bell" class="h-6 w-6"></span>
+                        </button>
+                        <img class="h-8 w-8 rounded-full ml-4" src="/api/placeholder/32/32" alt="User Profile">
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto p-4 md:p-6 bg-gray-100">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6">
+                    <h1 class="text-2xl font-semibold text-gray-900">Dashboard Overview</h1>
+                    <div class="mt-4 md:mt-0">
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Export Report</button>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-white rounded-lg shadow p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
+                                <span data-feather="users" class="h-6 w-6 text-white"></span>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Total Users</dt>
+                                    <dd class="text-xl font-semibold text-gray-900">24,512</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                                <span data-feather="shopping-cart" class="h-6 w-6 text-white"></span>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Total Sales</dt>
+                                    <dd class="text-xl font-semibold text-gray-900">$34,245</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3">
+                                <span data-feather="file-text" class="h-6 w-6 text-white"></span>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">New Orders</dt>
+                                    <dd class="text-xl font-semibold text-gray-900">456</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-red-500 rounded-md p-3">
+                                <span data-feather="activity" class="h-6 w-6 text-white"></span>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Conversion Rate</dt>
+                                    <dd class="text-xl font-semibold text-gray-900">3.45%</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-lg font-medium text-gray-900 mb-4">Revenue Overview</h2>
+                        <div class="w-full h-64">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-lg font-medium text-gray-900 mb-4">User Growth</h2>
+                        <div class="w-full h-64">
+                            <canvas id="usersChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity Table -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h2 class="text-lg font-medium text-gray-900">Recent Activity</h2>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Transaction</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-gray-200 rounded-full"></div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">John Smith</div>
+                                                <div class="text-sm text-gray-500">john.smith@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Feb 15, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$543.35</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Completed</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-gray-200 rounded-full"></div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Sarah Johnson</div>
+                                                <div class="text-sm text-gray-500">sarah.johnson@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Feb 14, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$864.21</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-gray-200 rounded-full"></div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Mike Brown</div>
+                                                <div class="text-sm text-gray-500">mike.brown@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Feb 13, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$125.00</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Completed</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-gray-200 rounded-full"></div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Lisa Williams</div>
+                                                <div class="text-sm text-gray-500">lisa.williams@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Feb 12, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$452.85</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Failed</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+        
+        // Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [12000, 19000, 15000, 25000, 22000, 30000],
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Users Chart
+        const usersCtx = document.getElementById('usersChart').getContext('2d');
+        const usersChart = new Chart(usersCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'New Users',
+                    data: [1200, 1900, 1500, 2500, 2200, 3000],
+                    backgroundColor: 'rgba(16, 185, 129, 0.8)',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            drawBorder: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Mobile menu toggle
+        document.querySelector('button[data-feather="menu"]').addEventListener('click', function() {
+            const sidebar = document.querySelector('aside');
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('fixed');
+            sidebar.classList.toggle('inset-0');
+            sidebar.classList.toggle('z-40');
+            sidebar.classList.toggle('md:relative');
+            sidebar.classList.toggle('md:flex');
+        });
+    </script>
+</body>
+</html>
